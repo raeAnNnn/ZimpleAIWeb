@@ -1,15 +1,8 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
     <title>Registro y enlace al Servidor de Discord</title>
     <style>
-        @font-face {
-    font-family: 'Airo Medium';
-    src: url('C:\Users\Rayyan\Desktop\Zimple Web\Airo-Medium.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-}
-
         body {
             background-color: #000000;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -24,17 +17,8 @@
             padding: 40px;
             text-align: center;
             display: flex;
-            justify-content: space-between;
-        }
-
-        .left-section,
-        .right-section {
-            flex-basis: 40%;
-            text-align: left;
-        }
-
-        .left-section {
-            margin-right: 30px;
+            flex-direction: column;
+            align-items: center;
         }
 
         h1 {
@@ -84,15 +68,15 @@
             transition: background-color 0.3s ease;
         }
 
-            .discord-link:hover {
-                background-color: #147948;
-            }
+        .discord-link:hover {
+            background-color: #147948;
+        }
 
         .logo {
             display: block;
             margin: 0 auto;
             max-width: 300px;
-            margin-bottom: 50px;
+            margin-bottom: 30px;
             border-radius: 50%;
             border: 10px solid #ffffff;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
@@ -103,35 +87,37 @@
             font-size: 60px;
             margin-bottom: 15px;
         }
+
+        @media screen and (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="left-section">
-            <div class="emoji">🎉</div>
-            <h1>¡Únete a nuestra comunidad en Discord!</h1>
-            <p>Completa el siguiente formulario para registrarte antes de unirte a nuestro servidor de Discord.</p>
+        <div class="emoji">🎉</div>
+        <h1>¡Únete a nuestra comunidad en Discord!</h1>
+        <p>Completa el siguiente formulario para registrarte antes de unirte a nuestro servidor de Discord.</p>
 
-            <form action="https://discord.gg/tu-enlace-de-servidor" method="post">
-                <label for="name">Nombre:</label>
-                <input type="text" id="name" name="name" required>
+        <form action="https://discord.gg/CJSzR58qTN" method="post">
+            <label for="name">Nombre:</label>
+            <input type="text" id="name" name="name" required>
 
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
 
-                <label for="birthdate">Fecha de Nacimiento:</label>
-                <input type="date" id="birthdate" name="birthdate" required>
+            <label for="birthdate">Fecha de Nacimiento:</label>
+            <input type="date" id="birthdate" name="birthdate" required>
 
-                <label for="discord-tag">Discord Tag:</label>
-                <input type="text" id="discord-tag" name="discord-tag" required>
+            <label for="discord-tag">Discord Tag:</label>
+            <input type="text" id="discord-tag" name="discord-tag" required>
 
-                <button class="discord-link" type="submit">Unirse a Discord</button>
-            </form>
-        </div>
+            <button class="discord-link" type="submit">Unirse a Discord</button>
+        </form>
 
-        <div class="right-section">
-            <img class="logo" src="https://media.discordapp.net/attachments/1108667351727087696/1108680424982581358/1684400404032.png" alt="Logo">
-        </div>
+        <img class="logo" src="https://media.discordapp.net/attachments/1108667351727087696/1108680424982581358/1684400404032.png" alt="Logo">
     </div>
 </body>
 </html>
