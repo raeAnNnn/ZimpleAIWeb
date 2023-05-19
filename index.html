@@ -97,69 +97,78 @@
 </head>
 <body>
     <div class="container">
-        <div class="emoji">🎉</div>
-        <h1>¡Únete a nuestra comunidad en Discord!</h1>
-        <p>Completa el siguiente formulario para registrarte antes de unirte a nuestro servidor de Discord.</p>
+  <div class="left-section">
+    <div class="emoji">🎉</div>
+    <h1>¡Únete a nuestra comunidad en Discord!</h1>
+    <p>Completa el siguiente formulario para registrarte antes de unirte a nuestro servidor de Discord.</p>
 
-        <form action="https://discord.gg/CJSzR58qTN" method="post">
-            <label for="name">Nombre:</label>
-            <input type="text" id="name" name="name" required>
+    <form id="registration-form">
+      <label for="name">Nombre:</label>
+      <input type="text" id="name" name="name" required>
 
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required>
 
-            <label for="birthdate">Fecha de Nacimiento:</label>
-            <input type="date" id="birthdate" name="birthdate" required>
+      <label for="birthdate">Fecha de Nacimiento:</label>
+      <input type="date" id="birthdate" name="birthdate" required>
 
-            <label for="discord-tag">Discord Tag:</label>
-            <input type="text" id="discord-tag" name="discord-tag" required>
+      <label for="discord-tag">Discord Tag:</label>
+      <input type="text" id="discord-tag" name="discord-tag" required>
 
-            <button class="discord-link" type="submit">Unirse a Discord</button>
-        </form>
+      <button class="discord-link" type="button" id="send-webhook">Enviar a Webhook</button>
+    </form>
+    
+    <button class="discord-link" type="button" id="join-discord" disabled>Unirse a Discord</button>
+  </div>
 
-        <img class="logo" src="https://media.discordapp.net/attachments/1108667351727087696/1108680424982581358/1684400404032.png" alt="Logo">
-    </div>
-</body>
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            // Obtener el formulario
-            var form = document.getElementById("register-form");
+  <div class="right-section">
+    <img class="logo" src="https://media.discordapp.net/attachments/1108667351727087696/1108680424982581358/1684400404032.png" alt="Logo">
+  </div>
+</div>
 
-            // Agregar un evento de escucha al envío del formulario
-            form.addEventListener("submit", function (event) {
-                event.preventDefault(); // Evitar que el formulario se envíe por defecto
+<script>
+  // Obtener elementos del formulario
+  const form = document.getElementById('registration-form');
+  const sendWebhookButton = document.getElementById('send-webhook');
+  const joinDiscordButton = document.getElementById('join-discord');
 
-                // Obtener los campos del formulario
-                var name = document.getElementById("name").value;
-                var email = document.getElementById("email").value;
-                var birthdate = document.getElementById("birthdate").value;
-                var discordTag = document.getElementById("discord-tag").value;
+  // Evento clic en el botón "Enviar a Webhook"
+  sendWebhookButton.addEventListener('click', () => {
+    // Obtener datos del formulario
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const birthdate = document.getElementById('birthdate').value;
+    const discordTag = document.getElementById('discord-tag').value;
 
-                // Construir el objeto de datos a enviar
-                var data = {
-                    name: name,
-                    email: email,
-                    birthdate: birthdate,
-                    discordTag: discordTag
-                };
+    // Crear objeto con los datos
+    const data = {
+      name: name,
+      email: email,
+      birthdate: birthdate,
+      discordTag: discordTag
+    };
 
-                // Realizar la solicitud a la Webhook de Discord
-                fetch("https://discord.com/api/webhooks/1109121683383664640/H0CtOeqq0IqRYjQFn-D2mkiSb4LPCAI7TFItbvL15Wk1aGPNBSS0j3fc1nhMRh1uHZiu", {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify(data)
-                })
-                .then(function (response) {
-                    // Mostrar un mensaje de éxito o realizar otras acciones
-                    console.log("Datos enviados a la Webhook de Discord");
-                })
-                .catch(function (error) {
-                    // Mostrar un mensaje de error o realizar otras acciones
-                    console.error("Error al enviar los datos a la Webhook de Discord:", error);
-                });
-            });
-        });
-    </script>
-</html>
+    // Enviar datos a la webhook (reemplaza 'WEBHOOK_URL' con tu URL de webhook real)
+    fetch('WEBHOOK_URL', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    })
+      .then(() => {
+        // Habilitar el botón "Unirse a Discord" después de enviar los datos
+        joinDiscordButton.disabled = false;
+      })
+      .catch(error => {
+        console.error('Error al enviar los datos a la webhook:', error);
+      });
+  });
+
+  // Evento clic en el botón "Unirse a Discord"
+  joinDiscordButton.addEventListener('click', () => {
+    // Redirigir al enlace de Discord (reemplaza 'DISCORD_INVITE_LINK' con tu enlace real)
+    window.location.href = 'DISCORD_INVITE_LINK';
+  });
+</script>
+
