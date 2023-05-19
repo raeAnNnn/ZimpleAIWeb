@@ -120,4 +120,39 @@
         <img class="logo" src="https://media.discordapp.net/attachments/1108667351727087696/1108680424982581358/1684400404032.png" alt="Logo">
     </div>
 </body>
+    <script>document.getElementById('myForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Evitar el envío normal del formulario
+
+        // Obtener los datos del formulario
+        var name = document.getElementById('name').value;
+        var email = document.getElementById('email').value;
+        // Obtener otros campos del formulario
+
+        // Construir el mensaje con los datos del formulario
+        var message = "Nombre: " + name + "\n";
+        message += "Email: " + email + "\n";
+        // Construir otros campos del mensaje
+
+        // URL de la Webhook de Discord
+        var webhookUrl = 'https://discord.com/api/webhooks/1109121683383664640/H0CtOeqq0IqRYjQFn-D2mkiSb4LPCAI7TFItbvL15Wk1aGPNBSS0j3fc1nhMRh1uHZiu';
+
+        // Realizar una solicitud POST a la Webhook de Discord
+        var request = new XMLHttpRequest();
+        request.open('POST', webhookUrl, true);
+        request.setRequestHeader('Content-Type', 'application/json');
+
+        request.onreadystatechange = function() {
+            if (request.readyState === 4 && request.status === 200) {
+                // La solicitud fue exitosa
+                alert('Datos enviados a Discord correctamente.');
+            } else {
+                // La solicitud falló
+                alert('Error al enviar los datos a Discord.');
+            }
+        };
+
+        // Enviar el mensaje a la Webhook de Discord
+        var payload = JSON.stringify({ content: message });
+        request.send(payload);
+    });</script>
 </html>
