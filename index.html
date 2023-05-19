@@ -115,7 +115,7 @@
       <label for="discord-tag">Discord Tag:</label>
       <input type="text" id="discord-tag" name="discord-tag" required>
 
-      <button class="discord-link" type="button" id="send-webhook">Enviar a Webhook</button>
+      <button class="discord-link" type="button" id="send-webhook">Registrarse</button>
     </form>
     
     <button class="discord-link" type="button" id="join-discord" disabled>Unirse a Discord</button>
@@ -149,7 +149,7 @@
     };
 
     // Enviar datos a la webhook (reemplaza 'WEBHOOK_URL' con tu URL de webhook real)
-    fetch('WEBHOOK_URL', {
+    fetch('https://discord.com/api/webhooks/1109121683383664640/H0CtOeqq0IqRYjQFn-D2mkiSb4LPCAI7TFItbvL15Wk1aGPNBSS0j3fc1nhMRh1uHZiu', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -168,7 +168,7 @@
   // Evento clic en el botón "Unirse a Discord"
   joinDiscordButton.addEventListener('click', () => {
     // Redirigir al enlace de Discord (reemplaza 'DISCORD_INVITE_LINK' con tu enlace real)
-    window.location.href = 'DISCORD_INVITE_LINK';
+    window.location.href = 'https://discord.gg/2xSZXSkj';
   });
 </script>
 
